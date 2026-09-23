@@ -131,6 +131,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginBiometric => 'Login with biometrics';
 
   @override
+  String get loginBiometricFailed =>
+      'Fingerprint verification failed. Please try again.';
+
+  @override
   String get loginValidationRequired => 'This field is required';
 
   @override

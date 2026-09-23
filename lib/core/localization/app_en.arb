@@ -43,6 +43,7 @@
   "loginRememberMe": "Remember me",
   "loginSubmit": "Login",
   "loginBiometric": "Login with biometrics",
+  "loginBiometricFailed": "Fingerprint verification failed. Please try again.",
   "loginValidationRequired": "This field is required",
   "loginFailedTitle": "Login failed",
 

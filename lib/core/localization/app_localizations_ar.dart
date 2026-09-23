@@ -130,6 +130,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loginBiometric => 'الدخول ببصمة الإصبع';
 
   @override
+  String get loginBiometricFailed => 'تعذّر التحقق من البصمة. حاول مرة أخرى.';
+
+  @override
   String get loginValidationRequired => 'هذا الحقل مطلوب';
 
   @override

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/localization/app_localizations.dart';
+import '../../../core/theme/app_theme.dart';
 import '../application/auth_controller.dart';
 import '../application/biometric_service.dart';
 
@@ -14,6 +15,7 @@ class BiometricLockScreen extends ConsumerStatefulWidget {
 
 class _BiometricLockScreenState extends ConsumerState<BiometricLockScreen> {
   bool _authenticating = false;
+  bool _showError = false;
 
   @override
   void initState() {
@@ -23,14 +25,20 @@ class _BiometricLockScreenState extends ConsumerState<BiometricLockScreen> {
 
   Future<void> _authenticate() async {
     if (_authenticating) return;
-    setState(() => _authenticating = true);
+    setState(() {
+      _authenticating = true;
+      _showError = false;
+    });
 
     final ok = await ref.read(biometricServiceProvider).authenticate(
           reason: 'Unlock to continue',
         );
 
     if (!mounted) return;
-    setState(() => _authenticating = false);
+    setState(() {
+      _authenticating = false;
+      _showError = !ok;
+    });
 
     if (ok) {
       ref.read(biometricLockControllerProvider.notifier).unlock();
@@ -53,6 +61,14 @@ class _BiometricLockScreenState extends ConsumerState<BiometricLockScreen> {
                 const Icon(Icons.fingerprint, size: 96),
                 const SizedBox(height: 16),
                 Text(userName, style: Theme.of(context).textTheme.titleLarge),
+                if (_showError) ...[
+                  const SizedBox(height: 16),
+                  Text(
+                    l10n.loginBiometricFailed,
+                    style: const TextStyle(color: AppColors.danger),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
                 const SizedBox(height: 32),
                 FilledButton.icon(
                   onPressed: _authenticating ? null : _authenticate,

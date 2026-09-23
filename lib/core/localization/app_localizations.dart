@@ -338,6 +338,12 @@ abstract class AppLocalizations {
   /// **'الدخول ببصمة الإصبع'**
   String get loginBiometric;
 
+  /// No description provided for @loginBiometricFailed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر التحقق من البصمة. حاول مرة أخرى.'**
+  String get loginBiometricFailed;
+
   /// No description provided for @loginValidationRequired.
   ///
   /// In ar, this message translates to:

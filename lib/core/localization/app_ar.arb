@@ -43,6 +43,7 @@
   "loginRememberMe": "تذكرني",
   "loginSubmit": "تسجيل الدخول",
   "loginBiometric": "الدخول ببصمة الإصبع",
+  "loginBiometricFailed": "تعذّر التحقق من البصمة. حاول مرة أخرى.",
   "loginValidationRequired": "هذا الحقل مطلوب",
   "loginFailedTitle": "فشل تسجيل الدخول",
 
